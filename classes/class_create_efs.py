@@ -27,3 +27,5 @@ class efs_class:
                         ]
                     )
         print('created mount tagret')
+    def get_fsi(self):
+        return self.fsi
