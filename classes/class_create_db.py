@@ -10,7 +10,7 @@ class rds_class:
     def __init__(self, vpcg, vpc_id, si1, si2):
         self.response = rds.create_db_instance(
                     DBName='wordpress',
-                    DBInstanceIdentifier='wordpress-inst1',
+                    DBInstanceIdentifier='wordpress-inst',
                     AllocatedStorage=5,
                     DBInstanceClass='db.t2.micro',
                     Engine='mysql',
@@ -24,7 +24,7 @@ class rds_class:
     def create_db_subnet(self, si1, si2):
         subnet = boto3.client('rds')
         response = subnet.create_db_subnet_group(
-            DBSubnetGroupName='sample-subnet-group1',
+            DBSubnetGroupName='sample-subnet-group',
             DBSubnetGroupDescription='sample-subnet-group123',
             SubnetIds=[
                 si1,

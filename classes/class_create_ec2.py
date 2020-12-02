@@ -7,6 +7,7 @@ class ec2_class:
         self.response = ec2.run_instances(InstanceType="t2.micro", 
                          MaxCount=1, 
                          MinCount=1, 
+                         KeyName='yaroslav-key-frankfurt',
                          ImageId="ami-0bd39c806c2335b95",
                          UserData=ud,
                          NetworkInterfaces=[
