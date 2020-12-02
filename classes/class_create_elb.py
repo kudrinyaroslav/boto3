@@ -32,6 +32,7 @@ class elb_class:
                         },
                     ]
                 )
+        print('load balancer created ', self.lbn)
     def register_inst_wit_load_balancer(self, inst1, inst2):
         elb.register_instances_with_load_balancer(
                     LoadBalancerName=self.lbn,

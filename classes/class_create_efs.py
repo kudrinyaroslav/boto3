@@ -17,7 +17,7 @@ class efs_class:
                     ]
                 )
         self.fsi = response['FileSystemId']
-        print(self.fsi)
+        print('Created elastic file system with id=', self.fsi)
     def create_mount_target(self, si, vpcg):
         efs.create_mount_target(
                         FileSystemId=self.fsi,
@@ -26,3 +26,4 @@ class efs_class:
                             vpcg,
                         ]
                     )
+        print('created mount tagret')

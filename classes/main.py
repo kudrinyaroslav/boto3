@@ -1,3 +1,5 @@
+import time
+
 from class_create_vpc import VpcClass
 from class_create_db import rds_class
 from class_create_ec2 import ec2_class
@@ -20,15 +22,10 @@ sg_inst = sg_class(vpc_id)
 sg_id = sg_inst.get_guid()
 
 # создаем базу данных
-# rds_inst = rds_class(sg_id, vpc_id, si1, si2)
+rds_inst = rds_class(sg_id, vpc_id, si1, si2)
 
 # cоздаем файловую систему
-# efs_inst = efs_class()
-
-# # прикрепляем к файловой системе группу безопасности и подсеть
-# efs_inst.create_mount_target(si1, vpc_id)
-# efs_inst.create_mount_target(si2, vpc_id)
-
+efs_inst = efs_class()
 
 # создаем ec2
 vm1 = ec2_class(sg_id,si1)
@@ -41,3 +38,8 @@ vm2id = vm2.GetEc2Id()
 elb_inst = elb_class('myload', si1, si2, sg_id)
 elb_inst.register_inst_wit_load_balancer(vm1id, vm2id)
 
+time.sleep(50)
+
+# прикрепляем к файловой системе группу безопасности и подсеть
+efs_inst.create_mount_target(si1, sg_id)
+efs_inst.create_mount_target(si2, sg_id)

@@ -28,6 +28,7 @@ class sg_class:
                 'IpRanges': [{'CidrIp': '0.0.0.0/0'}]}
             ]
         )
+        print('security group created ', self.security_group_id)
     def get_guid(self):
         return self.security_group_id
 

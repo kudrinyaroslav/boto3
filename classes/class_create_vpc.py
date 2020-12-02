@@ -10,17 +10,20 @@ class VpcClass:
             InstanceTenancy='default',
         )
         self.vpc_id = response['Vpc']['VpcId']
+        print('vpc created')
     def create_subnet(self, cb, az):
         response = self.vpc.create_subnet(
                 CidrBlock=cb,
                 VpcId=self.vpc_id,
                 AvailabilityZone=az,
         )
+        print('subnet created')
         return response['Subnet']['SubnetId']
     def attach_to_ig(self):
         ig_id = self.vpc.create_internet_gateway()['InternetGateway']['InternetGatewayId']
         self.vpc.attach_internet_gateway(InternetGatewayId=ig_id,
                                          VpcId=self.vpc_id)
+        print('VPC attached to internet gateway')
     def get_vpc_id(self):
         return self.vpc_id
 
